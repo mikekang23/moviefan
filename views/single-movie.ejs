@@ -1,4 +1,14 @@
-<% include head %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>	Movie App </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
 	<% include navbar %>
@@ -6,18 +16,18 @@
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2 text-center">
 				<h1 class="single-movie-title">
-
+					<%= parsedData.title %>
 				</h1>
 
 				<h3 class="single-movie-title">
-
+					<%= parsedData.tagline %>
 				</h3>
 
 
-				<img src="" />
+				<a href="<%= parsedData.homepage %>"><img src="<%= imageBaseUrl+parsedData.poster_path%>" /></a>
 
 				<p class="overview-header">Movie Synopsis: <span class="single-movie-overview">
-
+					<%= parsedData.overview %>
 				</span></p>
 			</div>
 		</div>
@@ -39,8 +49,11 @@
         <h4 class="modal-title" id="myModalLabel">Movie Information</h4>
       </div>
       <div class="modal-body">
-
-
+				<a href="https://www.imdb.com/title/<%= parsedData.imdb_id %>">IMDB Link</a>
+				<p><%= parsedData.budget %></p>
+				<p><%= parsedData.revenue %></p>
+				<p><%= parsedData.release_date %></p>
+				<p><%= parsedData.production_companies[0].name %></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
